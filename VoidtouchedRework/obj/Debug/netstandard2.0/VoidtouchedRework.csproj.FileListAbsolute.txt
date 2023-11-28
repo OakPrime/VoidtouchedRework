@@ -1,0 +1,12 @@
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\bin\Debug\netstandard2.0\VoidtouchedRework.deps.json
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\bin\Debug\netstandard2.0\VoidtouchedRework.dll
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\bin\Debug\netstandard2.0\VoidtouchedRework.pdb
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\obj\Debug\netstandard2.0\VoidtouchedRework.csproj.AssemblyReference.cache
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\obj\Debug\netstandard2.0\VoidtouchedRework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\obj\Debug\netstandard2.0\VoidtouchedRework.AssemblyInfoInputs.cache
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\obj\Debug\netstandard2.0\VoidtouchedRework.AssemblyInfo.cs
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\obj\Debug\netstandard2.0\VoidtouchedRework.csproj.CoreCompileInputs.cache
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\obj\Debug\netstandard2.0\VoidtouchedRework.dll
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\obj\Debug\netstandard2.0\VoidtouchedRework.pdb
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\bin\Debug\netstandard2.0\R2API.Language.dll
+C:\Users\Dan\source\repos\VoidtouchedRework\VoidtouchedRework\obj\Debug\netstandard2.0\VoidtouchedRework.csproj.CopyComplete

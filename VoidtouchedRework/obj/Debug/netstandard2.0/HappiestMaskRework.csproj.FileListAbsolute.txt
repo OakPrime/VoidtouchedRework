@@ -1,0 +1,10 @@
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\bin\Debug\netstandard2.0\HappiestMaskRework.deps.json
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\bin\Debug\netstandard2.0\HappiestMaskRework.dll
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\bin\Debug\netstandard2.0\HappiestMaskRework.pdb
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\obj\Debug\netstandard2.0\HappiestMaskRework.csproj.AssemblyReference.cache
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\obj\Debug\netstandard2.0\HappiestMaskRework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\obj\Debug\netstandard2.0\HappiestMaskRework.AssemblyInfoInputs.cache
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\obj\Debug\netstandard2.0\HappiestMaskRework.AssemblyInfo.cs
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\obj\Debug\netstandard2.0\HappiestMaskRework.csproj.CoreCompileInputs.cache
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\obj\Debug\netstandard2.0\HappiestMaskRework.dll
+C:\Users\Dan\source\repos\HappiestMaskRework\HappiestMaskRework\obj\Debug\netstandard2.0\HappiestMaskRework.pdb
