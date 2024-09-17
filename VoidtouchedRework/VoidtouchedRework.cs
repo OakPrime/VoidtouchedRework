@@ -22,7 +22,7 @@ namespace VoidtouchedRework
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "OakPrime";
         public const string PluginName = "VoidtouchedRework";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.1";
 
         //The Awake() method is run at the very start when the game is initialized.
         public void Awake()
@@ -53,30 +53,34 @@ namespace VoidtouchedRework
                         }
                     };
                 };*/
-                IL.RoR2.GlobalEventManager.OnHitEnemy += (il) =>
+                IL.RoR2.GlobalEventManager.ProcessHitEnemy += (il) =>
                 {
                     ILCursor c = new ILCursor(il);
                     c.GotoNext(
                         x => x.MatchLdloc(1),
                         x => x.MatchCallOrCallvirt(out _),
-                        x => x.MatchStloc(out _)
-                        );
-                    c.Index++;
+                        x => x.MatchBrfalse(out _),
+                        x => x.MatchLdarg(out _)
+                    );
+                    c.Index += 3;
+                    c.Emit(OpCodes.Ldloc_1);
                     c.Emit(OpCodes.Ldloc_2);
                     c.Emit(OpCodes.Ldarg_1);
-                    c.EmitDelegate<Func<CharacterBody, CharacterBody, DamageInfo, CharacterBody>>((attacker, victim, info) =>
+                    c.EmitDelegate<Action<CharacterBody, CharacterBody, DamageInfo>>((attacker, victim, info) =>
                     {
                         if (attacker.HasBuff(RoR2.DLC1Content.Buffs.EliteVoid) && Util.CheckRoll(info.procCoefficient * 100, attacker.master))
                         {
                             victim.AddTimedBuff(RoR2Content.Buffs.NullifyStack, 8f);
                         }
-                        return attacker;
                     });
                     c.GotoNext(
-                         x => x.MatchLdsfld(typeof(DLC1Content.Buffs), "EliteVoid")
-                        );
+                         x => x.MatchLdloc(out _),
+                         x => x.MatchLdloc(out _),
+                         x => x.MatchLdsfld(out _),
+                         x => x.MatchCallOrCallvirt(out _)
+                    );
                     c.Index--;
-                    c.RemoveRange(8);
+                    c.RemoveRange(10);
                 };
                 IL.RoR2.CharacterBody.AddTimedBuff_BuffDef_float += (il) =>
                 {
@@ -95,6 +99,7 @@ namespace VoidtouchedRework
                 };
                 On.RoR2.AffixVoidBehavior.OnDisable += (orig, self) =>
                 {
+                    orig(self);
                     self?.body?.inventory?.RemoveItem(RoR2Content.Items.BoostDamage.itemIndex, 3);
                 };
             }
