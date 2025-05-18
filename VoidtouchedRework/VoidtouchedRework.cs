@@ -22,7 +22,7 @@ namespace VoidtouchedRework
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "OakPrime";
         public const string PluginName = "VoidtouchedRework";
-        public const string PluginVersion = "1.0.1";
+        public const string PluginVersion = "1.0.2";
 
         //The Awake() method is run at the very start when the game is initialized.
         public void Awake()
@@ -56,31 +56,36 @@ namespace VoidtouchedRework
                 IL.RoR2.GlobalEventManager.ProcessHitEnemy += (il) =>
                 {
                     ILCursor c = new ILCursor(il);
-                    c.GotoNext(
-                        x => x.MatchLdloc(1),
-                        x => x.MatchCallOrCallvirt(out _),
-                        x => x.MatchBrfalse(out _),
-                        x => x.MatchLdarg(out _)
+                    // Adds nullify to void enemies
+                    c.TryGotoNext(
+                        x => x.MatchLdarg(out _),
+                        x => x.MatchLdfld(out _),
+                        x => x.MatchLdcI4(out _)
                     );
                     c.Index += 3;
-                    c.Emit(OpCodes.Ldloc_1);
-                    c.Emit(OpCodes.Ldloc_2);
+                    c.Emit(OpCodes.Ldloc_1); // this will not age well. points to victimBody, but might not later
                     c.Emit(OpCodes.Ldarg_1);
-                    c.EmitDelegate<Action<CharacterBody, CharacterBody, DamageInfo>>((attacker, victim, info) =>
+                    c.EmitDelegate<Action<CharacterBody, DamageInfo>>((victim, info) =>
                     {
+                        var attacker = info.attacker.GetComponent<CharacterBody>();
                         if (attacker.HasBuff(RoR2.DLC1Content.Buffs.EliteVoid) && Util.CheckRoll(info.procCoefficient * 100, attacker.master))
                         {
                             victim.AddTimedBuff(RoR2Content.Buffs.NullifyStack, 8f);
                         }
                     });
-                    c.GotoNext(
+                    // Removes collapse from void enemies
+                    c.TryGotoNext(
                          x => x.MatchLdloc(out _),
                          x => x.MatchLdloc(out _),
                          x => x.MatchLdsfld(out _),
                          x => x.MatchCallOrCallvirt(out _)
                     );
-                    c.Index--;
-                    c.RemoveRange(10);
+                    c.Index += 9;
+                    var label = c.DefineLabel();
+                    label.Target = c.Next;
+                    c.Index -= 10;
+                    c.Emit(OpCodes.Br_S, label);
+                    c.Emit(OpCodes.Ldc_I4_0);
                 };
                 IL.RoR2.CharacterBody.AddTimedBuff_BuffDef_float += (il) =>
                 {
